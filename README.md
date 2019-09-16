@@ -1,5 +1,7 @@
 # eduroam-ng
-Installation and setup for [eduroam](https://www.eduroam.org) including [eduroam CAT](https://cat.eduroam.org) and [Switchboard](https://switchboard.eduroam.africa) configuration
+Installation and setup for [eduroam](https://www.eduroam.org) including [eduroam CAT](https://cat.eduroam.org) and [Switchboard](https://switchboard.eduroam.africa) configuration.
+
+If you encounter any issues or need assistance with eduroam setup, email me at ezeasorekene[@]unizik[.]edu[.]ng
 
 ## Setup eduroam using Freeradius
 Install `freeradius` with `mysql` (or `postgresql`) support. Choose any as the case may be
