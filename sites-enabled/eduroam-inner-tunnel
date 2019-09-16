@@ -1,0 +1,35 @@
+server eduroam-inner-tunnel {
+
+  listen {
+    ipaddr = 127.0.0.1
+    port = 18120
+    type = auth
+  }
+
+  authorize {
+    filter_username
+    auth_log
+    suffix
+    update control {
+      &Proxy-To-Realm := LOCAL
+    }
+    eap
+    files
+    #sql
+    mschap
+    pap
+  }
+
+  authenticate {
+    Auth-Type PAP {
+      pap
+    }
+    pap
+
+    Auth-Type MS-CHAP {
+      mschap
+    }
+
+    eap
+  }
+}

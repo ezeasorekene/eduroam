@@ -1,0 +1,62 @@
+server eduroam {
+
+  listen {
+    type = "auth"
+    ipaddr = *
+    port = 1812
+  }
+
+  listen {
+    type = "auth"
+    ipv6addr = ::
+    port = 1812
+  }
+
+  authorize {
+    filter_username                         #Force some sanity on User-Name, see policy.d/filter
+    update request {
+      &Operator-Name := "1example.com"    # Literal number "1" is important prefix!
+      &Eduroam-SP-Country := "NG"
+    }
+    auth_log                                            # Detailed Logging
+    suffix                                              # Look for a realm separated by @
+    eap {
+       ok = return
+       updated = return
+    }
+    files
+    #pap
+  }
+
+  authenticate {
+    eap
+    #pap
+  }
+
+  preacct {
+    suffix
+  }
+
+  accounting {
+  }
+
+  post-auth {
+    reply_log                                           # Detailed Logging
+    Post-Auth-Type REJECT {
+      reply_log
+    }
+  }
+
+  pre-proxy {
+    pre_proxy_log                                       # Detailed Logging
+    if("%{Packet-Type}" != "Accounting-Request") {
+      attr_filter.pre-proxy
+    }
+  }
+
+  post-proxy {
+    post_proxy_log
+    attr_filter.post-proxy
+  }
+
+}
