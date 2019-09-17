@@ -25,8 +25,10 @@ Now restart the freeradius service and test the newly created user. You should g
 sudo systemctl restart freeradius.service
 radtest eduroam eduroampass localhost 0 testing123
 ```
-Sometimes, we may want to reject requests immediately instead, then set reject_delay = 0 in radiusd.conf file
+Sometimes, we may want to reject requests immediately instead, then set `reject_delay = 0` in `radiusd.conf` file
+```
 sudo nano /etc/freeradius/3.0/radiusd.conf
+```
 ```
   reject_delay = 0
 ```
@@ -60,7 +62,7 @@ sudo nano /etc/freeradius/3.0/proxy.conf
 ```
 Generate the `proxy.conf` configuration file from the [Switchboard](https://switchboard.eduroam.africa)
 
-*The contents of `proxy.conf` generated from the Switchboard typically looks like [this file](https://github.com/ezeasorekene/eduroam-ng/blob/master/switchboard/proxy.conf). Some unique values were stripped.*
+The contents of `proxy.conf` generated from the Switchboard typically looks like [this file](https://github.com/ezeasorekene/eduroam-ng/blob/master/switchboard/proxy.conf). Some unique values were stripped.
 
 ## Configure clients
 Now let us configure the clients. Again the main contents of the file should be generated and downloaded from the Switchboard. Rename, create and open the `clients.conf` file and add the generated contents.
@@ -69,7 +71,7 @@ sudo mv /etc/freeradius/3.0/clients.conf /etc/freeradius/3.0/clients.conf.origin
 sudo touch /etc/freeradius/3.0/clients.conf
 sudo nano /etc/freeradius/3.0/clients.conf
 ```
-*The contents of `proxy.conf` generated from the Switchboard typically looks like [this file](https://github.com/ezeasorekene/eduroam-ng/blob/master/switchboard/clients.conf). Some unique values were stripped.*
+The contents of `proxy.conf` generated from the Switchboard typically looks like [this file](https://github.com/ezeasorekene/eduroam-ng/blob/master/switchboard/clients.conf). Some unique values were stripped.
 
 ## Configure certificate
 Let us now make the certificates used by `eduroam`. Open the `ca.cnf` file and edit the file to correspond as specified
