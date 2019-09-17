@@ -1,4 +1,4 @@
-# eduroam-ng
+# eduroam
 Installation and setup for [eduroam](https://www.eduroam.org) including [eduroam CAT](https://cat.eduroam.org) and [Switchboard](https://switchboard.eduroam.africa) configuration.
 
 If you encounter any issues or need assistance with eduroam setup, email me at ezeasorekene[@]unizik[.]edu[.]ng
